@@ -3,7 +3,7 @@
 class App extends React.Component {
   state = {
     baseURL: "http://www.omdbapi.com/?",
-    apiKey: "apikey=d9040479",
+    apiKey: `apikey=d9040479`,
     query: "&t=",
     movieTitle: "",
     searchURL: "",
@@ -20,7 +20,7 @@ class App extends React.Component {
     e.preventDefault();
     this.setState(
       {
-        searchURL: `${this.state.baseURL}${this.state.apiKey}${this.state.query}${this.state.movieTitle}`,
+        searchURL: `${this.state.baseURL}${process.env.REACT_APP_OMD_API_KEY}${this.state.query}${this.state.movieTitle}`,
       },
       () => {
         fetch(this.state.searchURL)
